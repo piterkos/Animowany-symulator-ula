@@ -47,7 +47,7 @@ namespace Animowany_symlator_ula
                 return ZbieranaIloscNaktaruNaCykl;
             }
         }
-        public void Dzialaj()
+        public void Go()
         {
             Wiek++;
             if (Wiek > dlugoscZycia)

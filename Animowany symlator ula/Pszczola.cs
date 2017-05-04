@@ -22,11 +22,15 @@ namespace Animowany_symlator_ula
 
         private int ID;
         private Kwiat obecnyKwiat;
+        private Ul ul;
+        private World swiat;
 
         public StanPszczoly ObecnyStanPszczoly { get; private set; } 
 
-        public Pszczola(int id, Point polozenie)
+        public Pszczola(int id, Point polozenie, Ul ul, World swiat)
         {
+            this.ul = ul;
+            this.swiat = swiat;
             this.ID = id;
             Wiek = 0;
             this.polozenie = polozenie;

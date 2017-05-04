@@ -57,6 +57,7 @@
     <Compile Include="Pszczola.cs" />
     <Compile Include="StanPszczoly.cs" />
     <Compile Include="Ul.cs" />
+    <Compile Include="World.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
