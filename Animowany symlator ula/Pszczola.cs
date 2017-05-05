@@ -8,7 +8,7 @@ namespace Animowany_symlator_ula
 {
     class Pszczola
     {
-        const double KonsumpcjaMiodu = 0.5;
+        const double KonsumpcjaMioduPotrzebnaDoDzialania = 0.5;
         const int Ruch = 3;
         const double MinNekataruNaKwiatku = 1.5;
         const int OkresKariery = 1000;
@@ -17,11 +17,11 @@ namespace Animowany_symlator_ula
         public bool Wulu { get; private set; }
         public double ZebranyNektar { get; private set; }
 
-        private Point polozenie;
-        public Point Polozenie { get { return polozenie; } }
+        private Point obecnePolozenie;
+        public Point Polozenie { get { return obecnePolozenie; } }
 
         private int ID;
-        private Kwiat obecnyKwiat;
+        private Kwiat kwiatCel;
         private Ul ul;
         private World swiat;
 
@@ -33,9 +33,9 @@ namespace Animowany_symlator_ula
             this.swiat = swiat;
             this.ID = id;
             Wiek = 0;
-            this.polozenie = polozenie;
+            this.obecnePolozenie = polozenie;
             Wulu = true;
-            obecnyKwiat = null;
+            kwiatCel = null;
             ZebranyNektar = 0;
             ObecnyStanPszczoly = StanPszczoly.Spoczynek;
         }
@@ -46,26 +46,64 @@ namespace Animowany_symlator_ula
             {
                 case StanPszczoly.Spoczynek:
                     if (Wiek > OkresKariery)
+                    {
                         ObecnyStanPszczoly = StanPszczoly.Emerytka;
+                    }
+                    else if (swiat.Kwiatki.Count > 0 && ul.KosumpcjaMiodu(KonsumpcjaMioduPotrzebnaDoDzialania))
+                    {
+                        Kwiat kwiatek = swiat.Kwiatki[losuj.Next(swiat.Kwiatki.Count)];
+                        if (kwiatek.Zywot && kwiatek.Nektar >= MinNekataruNaKwiatku)
+                        {
+                            kwiatCel = kwiatek;
+                            ObecnyStanPszczoly = StanPszczoly.LotDoKwiatka;
+                        }
+                    }
                     break;
                 case StanPszczoly.LotDoKwiatka:
-                    //TODO: wprowadzić funkcje lotu do celu ( kwiatka)
+                    // jeżeli wśród kwiatków nie ma kwiatka-celu to zmień stan na powrót do ula
+                    // czyli czy czasami w czasie lotu do kwiatka, kwiatek nie obumarł
+                    if (!swiat.Kwiatki.Contains(kwiatCel))
+                        ObecnyStanPszczoly = StanPszczoly.PowrotDoUla;
+                    // jeżeli pszczoła znajduje się w ulu...
+                    else if (Wulu)
+                    {
+                        // jest w "Wyjściu" to zmień pole "Wulu" na false,
+                        // a położenie na "Wejście"
+                        if (RuchDoCelu(ul.PobierzLokalizacje("Wyjście")))
+                        {
+                            Wulu = false;
+                            obecnePolozenie = ul.PobierzLokalizacje("Wejście");
+                        }
+                    }
+                    else
+                    {
+                        // jeżeli po wykonaniu ruchu cel został osiągnięty to zmień stan pszczoły na: pobieranie nektaru.
+                        if (RuchDoCelu(kwiatCel.Polozenie))
+                            ObecnyStanPszczoly = StanPszczoly.PobieranieNektaru;
+                    }
                     break;
                 case StanPszczoly.PobieranieNektaru:
-                    double nektar = obecnyKwiat.ZbierzNektar();
+                    double nektar = kwiatCel.ZbierzNektar();
                     if (nektar > 0)
                         ZebranyNektar += nektar;
                     else
                         ObecnyStanPszczoly = StanPszczoly.PowrotDoUla;
                     break;
                 case StanPszczoly.PowrotDoUla:
-                    if (!Wulu)
+                    if (!Wulu) // jeśli jesteś poza ulem
                     {
-                        //TODO: Stworzyć metodę lotu do ula
+                        // to jeśli jesteś na wejściu to zmień położenie na wyjście z ula i wartość "Wulu" na "Wyjście"
+                        if (RuchDoCelu(ul.PobierzLokalizacje("Wejście")))
+                        {
+                            Wulu = true;
+                            obecnePolozenie = ul.PobierzLokalizacje("Wyjście");
+                        }
                     }
                     else
                     {
-                        ObecnyStanPszczoly = StanPszczoly.Spoczynek;
+                        // jeśli jest w ulu to gdy będzie w fabryce miodu to zmień stan na robi miód
+                        if(RuchDoCelu(ul.PobierzLokalizacje("Fabryka miodu")))
+                            ObecnyStanPszczoly = StanPszczoly.RobiMiod;
                     }
                     break;
                 case StanPszczoly.RobiMiod:
@@ -76,28 +114,36 @@ namespace Animowany_symlator_ula
                     }
                     else
                     {
-                        //TODO: Zamiana nektaru w miód i dodanie do zapasów ula
+                        if (ul.DodajMiod(0.5))   // jeżeli da sie dodać do ula miód
+                            ZebranyNektar -= 0.5;// odejmij nektar pszczole
+                        else
+                            ZebranyNektar = 0;  // jeżeli w ulu nie ma miejsca to pszczoła porzuca nektar i może działać dalej
                     }
                     break;
                 case StanPszczoly.Emerytka:
                     break;
             }
         }
+        /// <summary>
+        /// porusza pszczołę w kierunku celu i gdy jest na miejscu to zwraca true, jeśli nie to false
+        /// </summary>
+        /// <param name="cel"></param>
+        /// <returns>true - cel osiągnięty, false - cel jeszcze nie osiągnięty</returns>
         private bool RuchDoCelu(Point cel)
         {
-            if (Math.Abs(cel.X - polozenie.X) <= Ruch &&
-                Math.Abs(cel.Y - polozenie.X) <= Ruch)
+            if (Math.Abs(cel.X - obecnePolozenie.X) <= Ruch &&
+                Math.Abs(cel.Y - obecnePolozenie.X) <= Ruch)
                 return true;
 
-            if (cel.X > polozenie.X)
-                polozenie.X += Ruch;
-            else if (cel.X < polozenie.X)
-                polozenie.X -= Ruch;
+            if (cel.X > obecnePolozenie.X)
+                obecnePolozenie.X += Ruch;
+            else if (cel.X < obecnePolozenie.X)
+                obecnePolozenie.X -= Ruch;
 
-            if (cel.Y > polozenie.Y)
-                polozenie.Y += Ruch;
-            else if (cel.Y < polozenie.Y)
-                polozenie.Y -= Ruch;
+            if (cel.Y > obecnePolozenie.Y)
+                obecnePolozenie.Y += Ruch;
+            else if (cel.Y < obecnePolozenie.Y)
+                obecnePolozenie.Y -= Ruch;
 
             return false;
         }

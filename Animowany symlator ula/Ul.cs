@@ -74,7 +74,7 @@ namespace Animowany_symlator_ula
             return true;
         }
         /// <summary>
-        /// Pobiera ilość miodu i próbuje go odjąć od zapasów
+        /// Zwraca True i odejmuje ilość od zapasów miodu
         /// </summary>
         /// <param name="ilosc">ilość miodu do dodania do zapasów</param>
         /// <returns>przy braku wystarczającej ilości zwracamy fałsz</returns>

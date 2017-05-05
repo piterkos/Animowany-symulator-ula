@@ -33,7 +33,11 @@ namespace Animowany_symlator_ula
             NektarZbiory = 0;
             dlugoscZycia = losuj.Next(DlugoscZyciaMin, DlugoscZyciaMax + 1);
         }
-
+        /// <summary>
+        /// Zwraca zebraną ilość nektaru, jeżeli posiada kwiat taką ilość w zasobach
+        /// jeżeli nie posiada to zwraca 0
+        /// </summary>
+        /// <returns></returns>
         public double ZbierzNektar()
         {
             if (Nektar < ZbieranaIloscNaktaruNaCykl)
@@ -47,6 +51,10 @@ namespace Animowany_symlator_ula
                 return ZbieranaIloscNaktaruNaCykl;
             }
         }
+        /// <summary>
+        /// Zwiększa wiek/cykl i sprawdza czy nie została przekroczona długość życia,
+        /// jeżeli nie to następue zwiększenie ilości nektaru
+        /// </summary>
         public void Go()
         {
             Wiek++;
