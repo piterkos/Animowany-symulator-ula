@@ -17,7 +17,7 @@ namespace Animowany_symlator_ula
         const double minMioduDoProdukcjiPszczoly = 4;
 
         public double Miod { get; private set; }
-        public Dictionary<string, Point> lokalizacja { get; private set; }
+        public Dictionary<string, Point> Lokalizacja { get; private set; }
         private int IDliczbaPszczol = 0;
         private World swiat;
 
@@ -39,9 +39,9 @@ namespace Animowany_symlator_ula
         /// <returns></returns>
         public Point PobierzLokalizacje(string lokal)
         {
-            if (lokalizacja.ContainsKey(lokal))
+            if (Lokalizacja.ContainsKey(lokal))
             {
-                return lokalizacja[lokal];
+                return Lokalizacja[lokal];
             }
             else
                 throw new ArgumentException("Brak takiej lokalizacji: " + lokal);
@@ -51,11 +51,13 @@ namespace Animowany_symlator_ula
         /// </summary>
         public void UstawLokalizacjeWulu()
         {
-            lokalizacja = new Dictionary<string, Point>();
-            lokalizacja.Add("Wejście", new Point(600, 100));
-            lokalizacja.Add("Żłobek", new Point(95, 174));
-            lokalizacja.Add("Fabryka", new Point(157, 98));
-            lokalizacja.Add("Wyjście", new Point(194, 213));
+            Lokalizacja = new Dictionary<string, Point>
+            {
+                { "Wejście", new Point(600, 100) },
+                { "Żłobek", new Point(95, 174) },
+                { "Fabryka", new Point(157, 98) },
+                { "Wyjście", new Point(194, 213) }
+            };
         }
         /// <summary>
         /// ustawiamy ilość na jaką mona zamienić nektar i czy ewentualnie jest tyle miejsca w ulu na
@@ -107,7 +109,7 @@ namespace Animowany_symlator_ula
             IDliczbaPszczol++;
             int r1 = losuj.Next(100) - 50;
             int r2 = losuj.Next(100) - 50;
-            Point punktStartowy = new Point(lokalizacja["Żłobek"].X + r1, lokalizacja["Żłobek"].Y + r2);
+            Point punktStartowy = new Point(Lokalizacja["Żłobek"].X + r1, Lokalizacja["Żłobek"].Y + r2);
             Pszczola nowaPszczola = new Pszczola(IDliczbaPszczol, punktStartowy, this, swiat);
             swiat.Pszczoly.Add(nowaPszczola);
         }
