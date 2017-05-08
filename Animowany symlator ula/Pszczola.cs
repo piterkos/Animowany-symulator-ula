@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 namespace Animowany_symlator_ula
 {
+    [Serializable]
     class Pszczola
     {
         const double KonsumpcjaMioduPotrzebnaDoDzialania = 0.5;
@@ -25,7 +26,9 @@ namespace Animowany_symlator_ula
         private Ul ul;
         private World swiat;
 
-        public StanPszczoly ObecnyStanPszczoly { get; private set; } 
+        public StanPszczoly ObecnyStanPszczoly { get; private set; }
+        [NonSerialized]
+        public WiadomoscOdPszczoly PszczolaInfo;
 
         public Pszczola(int id, Point polozenie, Ul ul, World swiat)
         {
@@ -42,6 +45,7 @@ namespace Animowany_symlator_ula
         public void Go( Random losuj)
         {
             Wiek++;
+            StanPszczoly staryStan = ObecnyStanPszczoly;
             switch (ObecnyStanPszczoly)
             {
                 case StanPszczoly.Spoczynek:
@@ -123,7 +127,39 @@ namespace Animowany_symlator_ula
                 case StanPszczoly.Emerytka:
                     break;
             }
+            if (staryStan!=ObecnyStanPszczoly && PszczolaInfo !=null)
+            {
+                string infoStan;
+                switch (ObecnyStanPszczoly)
+                {
+                    case StanPszczoly.Spoczynek:
+                        infoStan = "bezrobotna";
+                        break;
+                    case StanPszczoly.LotDoKwiatka:
+                        infoStan = "leci do kwiatków";
+                        break;
+                    case StanPszczoly.PobieranieNektaru:
+                        infoStan = "pobiera nektar";
+                        break;
+                    case StanPszczoly.PowrotDoUla:
+                        infoStan = "powraca do ula";
+                        break;
+                    case StanPszczoly.RobiMiod:
+                        infoStan = "robi miód";
+                        break;
+                    case StanPszczoly.Emerytka:
+                        infoStan = "na emeryturze";
+                        break;
+                    default:
+                        infoStan = "bezrobotna";
+                        break;
+                }
+                PszczolaInfo(ID, infoStan);
+            }
         }
+
+        
+    
         /// <summary>
         /// porusza pszczołę w kierunku celu i gdy jest na miejscu to zwraca true, jeśli nie to false
         /// </summary>
@@ -132,7 +168,7 @@ namespace Animowany_symlator_ula
         private bool RuchDoCelu(Point cel)
         {
             if (Math.Abs(cel.X - obecnePolozenie.X) <= Ruch &&
-                Math.Abs(cel.Y - obecnePolozenie.X) <= Ruch)
+                Math.Abs(cel.Y - obecnePolozenie.Y) <= Ruch)
                 return true;
 
             if (cel.X > obecnePolozenie.X)

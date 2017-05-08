@@ -57,6 +57,7 @@
     <Compile Include="Pszczola.cs" />
     <Compile Include="StanPszczoly.cs" />
     <Compile Include="Ul.cs" />
+    <Compile Include="WiadomoscOdPszczoly.cs" />
     <Compile Include="World.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

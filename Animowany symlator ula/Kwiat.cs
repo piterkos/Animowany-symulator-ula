@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace Animowany_symlator_ula
 {
+    [Serializable]
     class Kwiat
     {
         #region stałe

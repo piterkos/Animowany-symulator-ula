@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Animowany_symlator_ula
 {
+    [Serializable]
     class Ul
     {
         const int poczatkowaLiczbaPszczol = 6;
@@ -20,12 +21,15 @@ namespace Animowany_symlator_ula
         public Dictionary<string, Point> Lokalizacja { get; private set; }
         private int IDliczbaPszczol = 0;
         private World swiat;
+        [NonSerialized]
+        public WiadomoscOdPszczoly infoOdPszczoly;
 
-        public Ul(World swiat)
+        public Ul(World swiat, WiadomoscOdPszczoly infoOdPszczoly)
         {
             this.swiat = swiat;
             Miod = poczatkowaIloscMiodu;
             UstawLokalizacjeWulu();
+            this.infoOdPszczoly = infoOdPszczoly;
             Random losuj = new Random();
             for (int i = 0; i < poczatkowaLiczbaPszczol; i++)
             {
@@ -55,7 +59,7 @@ namespace Animowany_symlator_ula
             {
                 { "Wejście", new Point(600, 100) },
                 { "Żłobek", new Point(95, 174) },
-                { "Fabryka", new Point(157, 98) },
+                { "Fabryka miodu", new Point(157, 98) },
                 { "Wyjście", new Point(194, 213) }
             };
         }
@@ -111,6 +115,7 @@ namespace Animowany_symlator_ula
             int r2 = losuj.Next(100) - 50;
             Point punktStartowy = new Point(Lokalizacja["Żłobek"].X + r1, Lokalizacja["Żłobek"].Y + r2);
             Pszczola nowaPszczola = new Pszczola(IDliczbaPszczol, punktStartowy, this, swiat);
+            nowaPszczola.PszczolaInfo += this.infoOdPszczoly;
             swiat.Pszczoly.Add(nowaPszczola);
         }
     }

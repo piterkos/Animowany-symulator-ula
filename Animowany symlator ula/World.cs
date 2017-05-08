@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace Animowany_symlator_ula
 {
+    [Serializable]
     class World
     {
         private const double ZbiorNektaruNaNowegoKwiatka = 50;
@@ -19,11 +20,11 @@ namespace Animowany_symlator_ula
         public List<Pszczola> Pszczoly;
         public List<Kwiat> Kwiatki;
 
-        public World()
+        public World(WiadomoscOdPszczoly infoVonPszczola)
         {
             Pszczoly = new List<Pszczola>();
             Kwiatki = new List<Kwiat>();
-            UL = new Ul(this);
+            UL = new Ul(this,infoVonPszczola);
             Random losuj = new Random();
             for (int i = 0; i < 10; i++)
             {

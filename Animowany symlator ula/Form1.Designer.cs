@@ -49,6 +49,12 @@
             this.lbl_iloscKlatek = new System.Windows.Forms.Label();
             this.lbl_iloscKlatekNaSek = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.otwórzToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.zapiszToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.drukujToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -56,12 +62,18 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripSeparator,
+            this.otwórzToolStripButton,
+            this.zapiszToolStripButton,
+            this.drukujToolStripButton,
+            this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(357, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(329, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -73,7 +85,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(124, 22);
             this.toolStripButton1.Text = "Rozpocznij symulację";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -83,15 +95,15 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(47, 22);
             this.toolStripButton2.Text = "Restart";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 197);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 379);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(357, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(329, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -238,11 +250,59 @@
             this.lbl_iloscKlatekNaSek.TabIndex = 11;
             this.lbl_iloscKlatekNaSek.Text = "klatek na sek";
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(12, 177);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(288, 186);
+            this.listBox1.TabIndex = 3;
+            // 
+            // otwórzToolStripButton
+            // 
+            this.otwórzToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.otwórzToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("otwórzToolStripButton.Image")));
+            this.otwórzToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.otwórzToolStripButton.Name = "otwórzToolStripButton";
+            this.otwórzToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.otwórzToolStripButton.Text = "&Otwórz";
+            this.otwórzToolStripButton.Click += new System.EventHandler(this.OtwórzToolStripButton_Click);
+            // 
+            // zapiszToolStripButton
+            // 
+            this.zapiszToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.zapiszToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("zapiszToolStripButton.Image")));
+            this.zapiszToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.zapiszToolStripButton.Name = "zapiszToolStripButton";
+            this.zapiszToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.zapiszToolStripButton.Text = "&Zapisz";
+            this.zapiszToolStripButton.Click += new System.EventHandler(this.ZapiszToolStripButton_Click);
+            // 
+            // drukujToolStripButton
+            // 
+            this.drukujToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.drukujToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("drukujToolStripButton.Image")));
+            this.drukujToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.drukujToolStripButton.Name = "drukujToolStripButton";
+            this.drukujToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.drukujToolStripButton.Text = "&Drukuj";
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 219);
+            this.ClientSize = new System.Drawing.Size(329, 401);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -280,6 +340,12 @@
         private System.Windows.Forms.Label lbl_iloscKlatek;
         private System.Windows.Forms.Label lbl_iloscKlatekNaSek;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripButton otwórzToolStripButton;
+        private System.Windows.Forms.ToolStripButton zapiszToolStripButton;
+        private System.Windows.Forms.ToolStripButton drukujToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 
