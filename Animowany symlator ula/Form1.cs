@@ -19,14 +19,17 @@ namespace Animowany_symlator_ula
         private DateTime start = DateTime.Now;
         private DateTime stop;
         private int liczbaKlatek = 0;
-
+        UlForm ulForm = new UlForm();
+        PoleForm poleForm = new PoleForm();
         public Form1()
         {
             InitializeComponent();
+            ulForm.Show(this);
+            poleForm.Show(this);
             swiat = new World(new WiadomoscOdPszczoly(WyslijWiadomosc));
-
             timer1.Interval = 50;
             timer1.Tick += new EventHandler(KlatkaGo);
+            ulForm.Show();
         }
 
         private void KlatkaGo(object sender, EventArgs e)
@@ -57,7 +60,6 @@ namespace Animowany_symlator_ula
             else
                 lbl_iloscKlatekNaSek.Text = "brak";
         }
-
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
             if(!timer1.Enabled)
@@ -72,7 +74,6 @@ namespace Animowany_symlator_ula
                 timer1.Stop();
             }
         }
-
         private void ToolStripButton2_Click(object sender, EventArgs e)
         {
             timer1.Stop();
@@ -96,16 +97,50 @@ namespace Animowany_symlator_ula
                 listBox1.Items.Add((StanPszczoly)i + ": " + licznik + " pszczoły\n");
             }
         }
-
         private void OtwórzToolStripButton_Click(object sender, EventArgs e)
         {
-
+            timer1.Stop();
+            World zapisanySwiat = swiat;
+            int zapisanaLiczbaKlatek = liczbaKlatek;
+            OpenFileDialog open = new OpenFileDialog()
+            {
+                Filter = "Plik pszczół (*.psc)|*.psc|Wszystkie pliki (*.*)|*.*",
+                Title = " Wskaż plik z zapisanym stanem pszczół"
+            };
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    using (Stream otworz = File.OpenRead(open.FileName))
+                    {
+                        swiat = (World)bf.Deserialize(otworz);
+                        liczbaKlatek = (int)bf.Deserialize(otworz);
+                    }
+                }
+                catch (Exception)
+                {
+                    swiat = zapisanySwiat;
+                    liczbaKlatek = zapisanaLiczbaKlatek;
+                    MessageBox.Show("Błąd w odczycie danych z pliku.");
+                }
+            }
+            swiat.UL.infoOdPszczoly = new WiadomoscOdPszczoly(WyslijWiadomosc);
+            foreach (Pszczola biene in swiat.Pszczoly)
+            {
+                biene.PszczolaInfo = new WiadomoscOdPszczoly(WyslijWiadomosc);
+            }
+            timer1.Start();
         }
 
         private void ZapiszToolStripButton_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            SaveFileDialog save = new SaveFileDialog();
+            SaveFileDialog save = new SaveFileDialog()
+            {
+                Title = "Wskaż plik do zapisu...",
+                Filter = "Plik pszczół (*.psc)|*.psc|Wszystkie pliki (*.*)|*.*"
+            };
             if (save.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -117,14 +152,10 @@ namespace Animowany_symlator_ula
                         bf.Serialize(sw, swiat);
                         bf.Serialize(sw, liczbaKlatek);
                     }
-            
-                
-                
                 }
                 catch (Exception)
                 {
-
-                    throw;
+                    MessageBox.Show("Wystąpił problem z zapisem");
                 }
             }
             
