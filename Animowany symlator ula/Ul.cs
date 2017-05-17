@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 namespace Animowany_symlator_ula
 {
     [Serializable]
-    class Ul
+    public class Ul
     {
         const int poczatkowaLiczbaPszczol = 6;
         const double poczatkowaIloscMiodu = 3.2;
         const double maxIloscZapasow = 15;
         const double wspolcznnikProporcjiPrzyProdukcji = 0.25;
-        const int maxLiczbaPszczol = 8;
+        const int maxLiczbaPszczol = 20;
         const double minMioduDoProdukcjiPszczoly = 4;
 
         public double Miod { get; private set; }
@@ -57,10 +57,10 @@ namespace Animowany_symlator_ula
         {
             Lokalizacja = new Dictionary<string, Point>
             {
-                { "Wejście", new Point(600, 100) },
-                { "Żłobek", new Point(95, 174) },
-                { "Fabryka miodu", new Point(157, 98) },
-                { "Wyjście", new Point(194, 213) }
+                { "Wejście", new Point(614, 103) },
+                { "Żłobek", new Point(108, 218) },
+                { "Fabryka miodu", new Point(207, 109) },
+                { "Wyjście", new Point(228, 240) }
             };
         }
         /// <summary>
@@ -108,7 +108,7 @@ namespace Animowany_symlator_ula
         /// Tworzy nową pszczołę i tworzy dla niej punkt startowy gdzieś w żłobku, poprzez losowy wybór tego obszaru
         /// </summary>
         /// <param name="losuj"></param>
-        private void DodajPszczole(Random losuj)
+        public void DodajPszczole(Random losuj)
         {
             IDliczbaPszczol++;
             int r1 = losuj.Next(100) - 50;

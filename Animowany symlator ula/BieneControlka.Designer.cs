@@ -44,7 +44,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DoubleBuffered = true;
             this.Name = "BieneControlka";
+            this.Resize += new System.EventHandler(this.BieneControlka_Resize);
             this.ResumeLayout(false);
 
         }

@@ -7,18 +7,31 @@ using System.Drawing;
 namespace Animowany_symlator_ula
 {
     [Serializable]
-    class Pszczola
+    public class Pszczola
     {
         const double KonsumpcjaMioduPotrzebnaDoDzialania = 0.5;
         const int Ruch = 3;
         const double MinNekataruNaKwiatku = 1.5;
         const int OkresKariery = 1000;
 
+        /// <summary>
+        /// Wiek pszczoły
+        /// </summary>
         public int Wiek { get; private set; }
+        /// <summary>
+        /// Określa czy pszczoła znajduje się w ulu
+        /// </summary>
         public bool Wulu { get; private set; }
+        /// <summary>
+        /// Zliczna ilość zebranego nektaru przez pszczołę
+        /// </summary>
         public double ZebranyNektar { get; private set; }
 
         private Point obecnePolozenie;
+        /// <summary>
+        /// Określa lokalizację pszczoły na formularzu
+        /// </summary>
+        /// <value>Lokalizacja Point</value>
         public Point Polozenie { get { return obecnePolozenie; } }
 
         private int ID;

@@ -33,6 +33,11 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.otwórzToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.zapiszToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.drukujToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -50,11 +55,7 @@
             this.lbl_iloscKlatekNaSek = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.otwórzToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.zapiszToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.drukujToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -96,6 +97,46 @@
             this.toolStripButton2.Size = new System.Drawing.Size(47, 22);
             this.toolStripButton2.Text = "Restart";
             this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // otwórzToolStripButton
+            // 
+            this.otwórzToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.otwórzToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("otwórzToolStripButton.Image")));
+            this.otwórzToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.otwórzToolStripButton.Name = "otwórzToolStripButton";
+            this.otwórzToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.otwórzToolStripButton.Text = "&Otwórz";
+            this.otwórzToolStripButton.Click += new System.EventHandler(this.OtwórzToolStripButton_Click);
+            // 
+            // zapiszToolStripButton
+            // 
+            this.zapiszToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.zapiszToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("zapiszToolStripButton.Image")));
+            this.zapiszToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.zapiszToolStripButton.Name = "zapiszToolStripButton";
+            this.zapiszToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.zapiszToolStripButton.Text = "&Zapisz";
+            this.zapiszToolStripButton.Click += new System.EventHandler(this.ZapiszToolStripButton_Click);
+            // 
+            // drukujToolStripButton
+            // 
+            this.drukujToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.drukujToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("drukujToolStripButton.Image")));
+            this.drukujToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.drukujToolStripButton.Name = "drukujToolStripButton";
+            this.drukujToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.drukujToolStripButton.Text = "&Drukuj";
+            this.drukujToolStripButton.Click += new System.EventHandler(this.drukujToolStripButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // statusStrip1
             // 
@@ -258,44 +299,11 @@
             this.listBox1.Size = new System.Drawing.Size(288, 186);
             this.listBox1.TabIndex = 3;
             // 
-            // otwórzToolStripButton
+            // timer2
             // 
-            this.otwórzToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.otwórzToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("otwórzToolStripButton.Image")));
-            this.otwórzToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.otwórzToolStripButton.Name = "otwórzToolStripButton";
-            this.otwórzToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.otwórzToolStripButton.Text = "&Otwórz";
-            this.otwórzToolStripButton.Click += new System.EventHandler(this.OtwórzToolStripButton_Click);
-            // 
-            // zapiszToolStripButton
-            // 
-            this.zapiszToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.zapiszToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("zapiszToolStripButton.Image")));
-            this.zapiszToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.zapiszToolStripButton.Name = "zapiszToolStripButton";
-            this.zapiszToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.zapiszToolStripButton.Text = "&Zapisz";
-            this.zapiszToolStripButton.Click += new System.EventHandler(this.ZapiszToolStripButton_Click);
-            // 
-            // drukujToolStripButton
-            // 
-            this.drukujToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.drukujToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("drukujToolStripButton.Image")));
-            this.drukujToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.drukujToolStripButton.Name = "drukujToolStripButton";
-            this.drukujToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.drukujToolStripButton.Text = "&Drukuj";
-            // 
-            // toolStripSeparator
-            // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 150;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 
@@ -308,6 +316,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
             this.Text = "Symulator ula";
+            this.Move += new System.EventHandler(this.Form1_Move);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -346,6 +355,7 @@
         private System.Windows.Forms.ToolStripButton zapiszToolStripButton;
         private System.Windows.Forms.ToolStripButton drukujToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

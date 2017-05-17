@@ -8,11 +8,11 @@ using System.Drawing;
 namespace Animowany_symlator_ula
 {
     [Serializable]
-    class Kwiat
+    public class Kwiat
     {
         #region stałe
-        const int DlugoscZyciaMin = 15000;
-        const int DlugoscZyciaMax = 30000;
+        const int DlugoscZyciaMin = 1500;
+        const int DlugoscZyciaMax = 3000;
         const double StartowanaIloscNektaru = 1.5;
         const double MaxIloscNektaru = 5;
         const double ZwiekszenieIlosciNektaruNaCykl = 0.01;

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Animowany_symlator_ula.BieneControlka" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAIEAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BieneControlka.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.Form1" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQDIAEAoCAgARIgEFCAAFwHCEAgJAgEAgACAMQGACE=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.Kwiat">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACIAhAAAAAAAJAAAQACEAAAAAMAAAAgAAIAAAA=</HashCode>
+      <FileName>Kwiat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.PoleForm" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAIgBAAAAAEAIAAAAAQA=</HashCode>
+      <FileName>PoleForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.Program" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.Pszczola">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAIgADgAAAAAAgAAAQEAAAAoBAAAggEAgAAAA=</HashCode>
+      <FileName>Pszczola.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.Ul">
+    <Position X="5.75" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ABEAABNAIBQAAAgAAAEAAAAAEAAAAAAQAABAgAAAAAA=</HashCode>
+      <FileName>Ul.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.UlForm" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAQAAAAQA=</HashCode>
+      <FileName>UlForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.World" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAEAgAAECAABAgAAAIAAAAEAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>World.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.Properties.Resources" Collapsed="true">
+    <Position X="11.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAwgEBEIAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animowany_symlator_ula.Renderer">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACIAAAAAAAgAIAAAEEAAAAIAAAAAAQAAADEMAAAAA=</HashCode>
+      <FileName>Renderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Animowany_symlator_ula.StanPszczoly" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEgAAJAAAAAAACAAAAAAgA=</HashCode>
+      <FileName>StanPszczoly.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="Animowany_symlator_ula.WiadomoscOdPszczoly" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WiadomoscOdPszczoly.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

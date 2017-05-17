@@ -8,13 +8,13 @@ using System.Drawing;
 namespace Animowany_symlator_ula
 {
     [Serializable]
-    class World
+    public class World
     {
         private const double ZbiorNektaruNaNowegoKwiatka = 50;
         private const int PoleMinX = 15;
         private const int PoleMinY = 177;
-        private const int PoleMaxX = 690;
-        private const int PoleMaxY = 290;
+        private const int PoleMaxX = 700;
+        private const int PoleMaxY = 400;
 
         public Ul UL;
         public List<Pszczola> Pszczoly;
@@ -30,17 +30,19 @@ namespace Animowany_symlator_ula
             {
                 DodajKwiatka(losuj);
             }
+            
         }
         /// <summary>
         /// Dodaj nowego kwiatka w losowej lokalizacji z zakresu Pola określonego przez stałe
         /// </summary>
         /// <param name="losuj"></param>
-        private void DodajKwiatka(Random losuj)
+        public void DodajKwiatka(Random losuj)
         {
             Point lokalizacja = new Point(losuj.Next(PoleMinX, PoleMaxX), losuj.Next(PoleMinY, PoleMaxY));
             Kwiat nowyKwiat = new Kwiat(lokalizacja, losuj);
             Kwiatki.Add(nowyKwiat);
         }
+        
         /// <summary>
         /// uruchomienie rozgrywki, polegające na uruchomieniu metod Go() każdej z  instancji klas
         /// </summary>
